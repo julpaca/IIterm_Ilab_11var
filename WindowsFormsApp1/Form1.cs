@@ -13,30 +13,105 @@ using System.Diagnostics;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        int xFirstCircle;
-        int yFirstCircle;
-        int radFirstCircle;
-        int xScndCircle;
-        int yScndCircle;
-        int radScndCircle;
-        public Form1()
+        Circle firstCircle = new Circle(0, 0, 0);
+        Circle secondCircle = new Circle(0, 0, 0);
+        public MainForm(Circle firstC, Circle secondC)
         {
             InitializeComponent();
+            try
+            {
+                //string greetingStatus = System.IO.File.ReadAllText("Cache.txt");
+
+                firstCircle = firstC;
+                secondCircle = secondC;
+                xCoordForFirstCircle.Text = firstCircle.xC.ToString();
+                yCoordForFirstCircle.Text = firstCircle.yC.ToString();
+                radiusForFirstCircle.Text = firstCircle.rad.ToString();
+
+                xCoordForScndCircle.Text = secondCircle.xC.ToString();
+                yCoordForScndCircle.Text = secondCircle.yC.ToString();
+                radiusForScndCircle.Text = secondCircle.rad.ToString();
+                greeting();
+            }
+            /* catch (FileNotFoundException ex)
+             {
+                 string addMs = " Файл будет повторно создан со значением \"Greeting is enabled\"."; ;
+                 MessageBox.Show(ex.Message + addMs);
+
+                 File.Create("Cache.txt").Close();
+                 using (StreamWriter streamWr = File.AppendText("Cache.txt"))
+                 {
+                     streamWr.Write("Greeting is enabled");
+                 }
+             }*/
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            /*finally
+            {
+                cbGreetingStatus.Checked = Answer.isCBChecked;
+                
+                string greetingStatus = System.IO.File.ReadAllText("Cache.txt");
+
+                *//*if (greetingStatus.Contains("Work with files...")) {
+                    System.IO.File.WriteAllText("Cache.txt", "Greeting is enabled");
+                }*//*
+
+                if (greetingStatus.Contains("Greeting is enabled"))
+                {
+                    MessageBox.Show("Лабораторная работа #1, вариант #11. Работу выполнила Науменко Юлия, 415а группа. В этом приложении Вы можете ввести данные о двух кругах для поиска их общей площади.Круги находятся в плоскости. Также Вы можете взять данные о кругах из файла, либо сохранить введённые вами данные в файл.");
+                    cbGreetingStatus.Checked = false;
+                }
+
+
+                if (greetingStatus.Contains("Greeting is disabled"))
+                    cbGreetingStatus.Checked = true;
+                
+                *//*
+                if (greetingStatus == "Work with files...")
+                    cbGreetingStatus.Checked = true;*/
+
+
+            /*firstCircle = firstC;
+            secondCircle = secondC;
+            xCoordForFirstCircle.Text = firstCircle.xC.ToString();
+            yCoordForFirstCircle.Text = firstCircle.yC.ToString();
+            radiusForFirstCircle.Text = firstCircle.rad.ToString();
+
+            xCoordForScndCircle.Text = secondCircle.xC.ToString();
+            yCoordForScndCircle.Text = secondCircle.yC.ToString();
+            radiusForScndCircle.Text = secondCircle.rad.ToString();*/
+
+            /*greetingStatus = System.IO.File.ReadAllText("Cache");
+            if (greetingStatus == "Ok")
+            {
+                MessageBox.Show("Лабораторная работа #1, вариант #11. Работу выполнила Науменко Юлия, 415а группа. В этом приложении Вы можете ввести данные о двух кругах для поиска их общей площади.Круги находятся в плоскости. Также Вы можете взять данные о кругах из файла, либо сохранить введённые вами данные в файл.");
+            }
+            else
+            {
+                cbGreetingStatus.Checked = true;
+            }*//*
+        }*/
         }
+
+
 
         private void calculate_Click(object sender, EventArgs e)
         {
             if (have_Text_Boxes_Values(xCoordForFirstCircle, yCoordForFirstCircle, radiusForFirstCircle, xCoordForScndCircle, yCoordForScndCircle, radiusForScndCircle) == true)
             {
-                xFirstCircle = Convert.ToInt32(xCoordForFirstCircle.Text);
-                yFirstCircle = Convert.ToInt32(yCoordForFirstCircle.Text);
-                radFirstCircle = Convert.ToInt32(radiusForFirstCircle.Text);
+                int xFirstCircle = Convert.ToInt32(xCoordForFirstCircle.Text);
+                int yFirstCircle = Convert.ToInt32(yCoordForFirstCircle.Text);
+                int radFirstCircle = Convert.ToInt32(radiusForFirstCircle.Text);
 
-                xScndCircle = Convert.ToInt32(xCoordForScndCircle.Text);
-                yScndCircle = Convert.ToInt32(yCoordForScndCircle.Text);
-                radScndCircle = Convert.ToInt32(radiusForScndCircle.Text);
+                int xScndCircle = Convert.ToInt32(xCoordForScndCircle.Text);
+                int yScndCircle = Convert.ToInt32(yCoordForScndCircle.Text);
+                int radScndCircle = Convert.ToInt32(radiusForScndCircle.Text);
 
                 calculation_Distance_Between_Circles(xFirstCircle, xScndCircle, yFirstCircle, yScndCircle, radFirstCircle, radScndCircle);
             }
@@ -61,7 +136,44 @@ namespace WindowsFormsApp1
             else return true;
         }
 
-        private void textBoxXCoord1_KeyPress(object sender, KeyPressEventArgs e)
+        private void tbTextLeave(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
+                double num = Convert.ToDouble(tb.Text);
+            }
+            catch
+            {
+                MessageBox.Show("В поле были некорректные значения - любые знаки, помимо цифр. Введите данные снова.", "Упс!", MessageBoxButtons.OK);
+                System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
+                tb.Clear();
+            }
+        }
+
+        private void tb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if ((e.KeyChar >= '0') && (e.KeyChar <= '9'))
+                    return;
+                if ((e.KeyChar == '-') && (yCoordForFirstCircle.Text.Length == 0)) return;
+
+                if (Char.IsControl(e.KeyChar))
+                {
+                    if (e.KeyChar == (Char)Keys.Enter)
+                        radiusForFirstCircle.Focus();
+                    return;
+                }
+                e.Handled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /*private void textBoxXCoord1_KeyPress(object sender, KeyPressEventArgs e)
         {
             try
             {
@@ -82,21 +194,6 @@ namespace WindowsFormsApp1
                MessageBox.Show(ex.Message);
             }
         }
-
-        private void xCoordForFirstCircle_TextChanged(object sender, EventArgs e)
-        {
-            double outputValue = 0;
-            bool isValueCorrect = false;
-            isValueCorrect = double.TryParse(xCoordForFirstCircle.Text, out outputValue);
-            if (!isValueCorrect)
-            {
-                MessageBox.Show("В поле были некорректные значения - любые знаки, помимо цифр. Введите данные снова.");
-                xCoordForFirstCircle.Clear();
-                xCoordForFirstCircle.Focus();
-            }
-        }
-
-
         private void textBoxYCoord1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= '0') && (e.KeyChar <= '9')) return;
@@ -112,18 +209,6 @@ namespace WindowsFormsApp1
             e.Handled = true;
         }
 
-        private void yCoordForFirstCircle_TextChanged(object sender, EventArgs e)
-        {
-            double outputValue = 0;
-            bool isValueCorrect = false;
-            isValueCorrect = double.TryParse(yCoordForFirstCircle.Text, out outputValue);
-            if (!isValueCorrect)
-            {
-                MessageBox.Show("В поле были некорректные значения - любые знаки, помимо цифр. Введите данные снова.");
-                yCoordForFirstCircle.Clear();
-                yCoordForFirstCircle.Focus();
-            }
-        }
 
         private void textBoxRad1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -140,19 +225,7 @@ namespace WindowsFormsApp1
             e.Handled = true;
         }
 
-        private void radiusForFirstCircle_TextChanged(object sender, EventArgs e)
-        {
-            double outputValue = 0;
-            bool isValueCorrect = false;
-            isValueCorrect = double.TryParse(radiusForFirstCircle.Text, out outputValue);
-            if (!isValueCorrect)
-            {
-                MessageBox.Show("В поле были некорректные значения - любые знаки, помимо цифр. Введите данные снова.");
-                radiusForFirstCircle.Clear();
-                radiusForFirstCircle.Focus();
-            }
-        }
-
+  
         private void textBoxXCoord2_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= '0') && (e.KeyChar <= '9'))
@@ -168,19 +241,7 @@ namespace WindowsFormsApp1
             e.Handled = true;
         }
 
-        private void xCoordForScndCircle_TextChanged(object sender, EventArgs e)
-        {
-            double outputValue = 0;
-            bool isValueCorrect = false;
-            isValueCorrect = double.TryParse(xCoordForScndCircle.Text, out outputValue);
-            if (!isValueCorrect)
-            {
-                MessageBox.Show("В поле были некорректные значения - любые знаки, помимо цифр. Введите данные снова.");
-                xCoordForScndCircle.Clear();
-                xCoordForScndCircle.Focus();
-            }
-        }
-
+  
         private void textBoxYCoord2_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= '0') && (e.KeyChar <= '9'))
@@ -196,19 +257,7 @@ namespace WindowsFormsApp1
             e.Handled = true;
         }
 
-        private void yCoordForScndCircle_TextChanged(object sender, EventArgs e)
-        {
-            double outputValue = 0;
-            bool isValueCorrect = false;
-            isValueCorrect = double.TryParse(yCoordForScndCircle.Text, out outputValue);
-            if (!isValueCorrect)
-            {
-                MessageBox.Show("В поле были некорректные значения - любые знаки, помимо цифр. Введите данные снова.");
-                yCoordForScndCircle.Clear();
-                yCoordForScndCircle.Focus();
-            }
-        }
-
+ 
         private void textBoxRad2_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= '1') && (e.KeyChar <= '9'))
@@ -223,21 +272,9 @@ namespace WindowsFormsApp1
                 return;
             }
             e.Handled = true;
-        }
+        }*/
 
-        private void radiusForScndCircle_TextChanged(object sender, EventArgs e)
-        {
-            double outputValue = 0;
-            bool isValueCorrect = false;
-            isValueCorrect = double.TryParse(radiusForScndCircle.Text, out outputValue);
-            if (!isValueCorrect)
-            {
-                MessageBox.Show("В поле были некорректные значения - любые знаки, помимо цифр. Введите данные снова.");
-                radiusForScndCircle.Clear();
-                radiusForScndCircle.Focus();
-            }
-        }
-        
+
         private void validatingDistance(double distance)
         {
             string message = "Оу, кажется, у этих кругов нет общей площади. Сотрём введённые данные?";
@@ -270,7 +307,7 @@ namespace WindowsFormsApp1
 
         private void calculation_Area_Crossed_Circles(int rad1, int rad2, double distance)
         {
-            double AreaCrosedCircles = 0;
+            double AreaCrossedCircles = 0;
             double TriangleArea1 = 0;
             double TriangleArea2 = 0;
             double TmpAcos1 = 0;
@@ -281,9 +318,9 @@ namespace WindowsFormsApp1
             if (distance < Math.Abs(rad1 - rad2))
             {
                 if (rad1 < rad2)
-                AreaCrosedCircles = pi * rad1 * rad1;
+                    AreaCrossedCircles = pi * rad1 * rad1;
                 else if (rad2 < rad1)
-                AreaCrosedCircles = pi * rad2 * rad2;
+                    AreaCrossedCircles = pi * rad2 * rad2;
 
             }
             else
@@ -295,9 +332,12 @@ namespace WindowsFormsApp1
                 TriangleArea1 = (rad1 * rad1 * (F1 - Math.Sin(F1))) / 2;
                 TriangleArea2 = (rad2 * rad2 * (F2 - Math.Sin(F2))) / 2;
 
-                AreaCrosedCircles = TriangleArea1 + TriangleArea2;
+                AreaCrossedCircles = TriangleArea1 + TriangleArea2;
+                AreaCrossedCircles = Math.Round(AreaCrossedCircles, 3);
+                Answer.answer = AreaCrossedCircles;
+                Answer.haveCirclesCollectiveArea = true;
             }
-            show_Answer(AreaCrosedCircles);
+            show_Answer(AreaCrossedCircles);
 
         }
         private void show_Answer(double area)
@@ -311,103 +351,14 @@ namespace WindowsFormsApp1
             {
                 AnswerLabel.Visible = true;
                 TotalAreaMessage.Visible = true;
-                labelSaveInFile.Visible = true;
-                BtnSaveInFile.Visible = true;
-                labelSaveResults.Visible = true;
-                btnSaveResults.Visible = true;
             }
             else
             {
                 AnswerLabel.Visible = false;
                 TotalAreaMessage.Visible = false;
-                labelSaveInFile.Visible = false;
-                BtnSaveInFile.Visible = false;
-                labelSaveResults.Visible = false;
-                btnSaveResults.Visible = false;
             }
 
         }
-
-        private void BtnSaveInFile_Click(object sender, EventArgs e)
-        {
-            GC.Collect();
-            SaveFileDialog fileDialog = new SaveFileDialog();
-
-            fileDialog.Filter = "*.txt|*.txt";
-            fileDialog.RestoreDirectory = true;
-
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                StreamWriter writer = new StreamWriter(File.Create(fileDialog.FileName));
-                writer.WriteLine(xCoordForFirstCircle.Text);
-                writer.WriteLine(yCoordForFirstCircle.Text);
-                writer.WriteLine(radiusForFirstCircle.Text);
-                
-                writer.WriteLine(xCoordForScndCircle.Text);
-                writer.WriteLine(yCoordForScndCircle.Text);
-                writer.WriteLine(radiusForScndCircle.Text);
-                writer.Dispose();
-
-                MessageBox.Show("Данные успешно сохранены.", "Поздравляю!");
-                writer.Close();
-            }
-        }
-
-        private void takeValuesFromFile_Click(object sender, EventArgs e)
-        {
-            double inputData;
-            Stream myStream = null;
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFile.RestoreDirectory = true;
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    string file = openFile.FileName;
-                    if (!file.Contains(".txt"))
-                    {
-                        MessageBox.Show("Файл недопустимого типа.", "Упс!");
-                        openFile.ShowDialog();
-                    }
-
-                    if ((myStream = openFile.OpenFile()) != null)
-                    {
-                        using (StreamReader fileReader = new StreamReader(openFile.FileName))
-                        {
-                            string[] values = fileReader.ReadToEnd().Split('\n');
-                            try
-                            {
-                                for (int i = 0; i < values.Length-1; i++)
-                                {
-                                    inputData = Convert.ToDouble(values[i]);
-                                }
-                                xCoordForFirstCircle.Text = values[0];
-                                yCoordForFirstCircle.Text = values[1];
-
-                                radiusForFirstCircle.Text = values[2];
-
-                                xCoordForScndCircle.Text = values[3];
-                                yCoordForScndCircle.Text = values[4];
-                                radiusForScndCircle.Text = values[5];
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                            fileReader.Close();
-                        }
-                    }
-
-                }
-                
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
         private void buttonReadyValues_Click(object sender, EventArgs e)
         {
             xCoordForFirstCircle.Text = "1";
@@ -419,34 +370,93 @@ namespace WindowsFormsApp1
             radiusForScndCircle.Text = "6";
         }
 
-        private void btnSaveResults_Click(object sender, EventArgs e)
+        private void btnGoToFileWork_Click(object sender, EventArgs e)
         {
-            GC.Collect();
-            SaveFileDialog fileDialog = new SaveFileDialog();
-
-            fileDialog.Filter = "*.txt|*.txt";
-            fileDialog.RestoreDirectory = true;
-
-            if (fileDialog.ShowDialog() == DialogResult.OK)
+            //checkingGreetingStatus.Checked = false;
+            try
             {
-                StreamWriter writer = new StreamWriter(File.Create(fileDialog.FileName));
-                writer.WriteLine("Первый круг:\n\n");
-                writer.WriteLine("Координаты:\n");
-                writer.WriteLine("x: " + xCoordForFirstCircle.Text + " ");
-                writer.WriteLine("y: " + yCoordForFirstCircle.Text + "\n");
-                writer.WriteLine("Радиус: " + radiusForFirstCircle.Text + "\n\n");
-                
-                writer.WriteLine("Второй круг:\n\n");
-                writer.WriteLine("Координаты:\n");
-                writer.WriteLine("x: " + xCoordForScndCircle.Text + " ");
-                writer.WriteLine("y: " + yCoordForScndCircle.Text + "\n");
-                writer.WriteLine("Радиус: " + radiusForScndCircle.Text + "\n\n");
-                writer.WriteLine("Общая площадь этих кругов: " + AnswerLabel.Text);
-                writer.Dispose();
+                firstCircle.xC = Convert.ToDouble(xCoordForFirstCircle.Text); /*= Convert.ToDouble(xCoordForFirstCircle.Text)*/;
+                firstCircle.yC = Convert.ToDouble(yCoordForFirstCircle.Text);
+                firstCircle.rad = Convert.ToDouble(radiusForFirstCircle.Text);
 
-                MessageBox.Show("Данные успешно сохранены.", "Поздравляю!");
-                writer.Close();
+                secondCircle.xC = Convert.ToDouble(xCoordForScndCircle.Text);
+                secondCircle.yC = Convert.ToDouble(yCoordForScndCircle.Text);
+                secondCircle.rad = Convert.ToDouble(radiusForScndCircle.Text);
+                Answer.canCirclesBeSaved = true;
+                if (String.IsNullOrWhiteSpace(Convert.ToString(Answer.answer)))
+                    Answer.canResultsBeSaved = false;
+                else
+                    Answer.canResultsBeSaved = true;
             }
+
+            catch
+            {
+                Answer.canCirclesBeSaved = false;
+                Answer.canResultsBeSaved = false;
+            }
+            checking_cb(sender, e);
+            File.AppendAllText("Cache.txt", "\n\nWork with files...");
+
+            /*StreamWriter sw = new StreamWriter("Cache.txt");
+            sw.Write("Work with files...");
+            sw.Close();*/
+
+            //System.IO.File.WriteAllText("Cache.txt", "Work with files...");
+            //Answer.isCBChecked = cbGreetingStatus.Checked;
+            MainForm.ActiveForm.Hide();
+            FileWork fileWork = new FileWork(firstCircle, secondCircle);
+            //fileWork.Tag = this;
+            fileWork.ShowDialog();
+            Close();
         }
+
+        private void checking_cb (object sender, EventArgs e) {
+            if (cbGreetingStatus.Checked == true)
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is disabled");
+            if (cbGreetingStatus.Checked == false)
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is enabled");
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (cbGreetingStatus.Checked == true)
+            {
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is disabled");
+            }
+
+            if (cbGreetingStatus.Checked == false)
+            {
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is enabled");
+            }
+
+        }
+
+        /*private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string greetingStatus = System.IO.File.ReadAllText("Cache.txt");
+            if (greetingStatus == "Work with files...")
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is enabled");
+        }
+
+        private void cbGreetingStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbGreetingStatus.Checked == true)
+            {
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is disabled");
+            }
+            else
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is enabled");
+            Answer.isCBChecked = cbGreetingStatus.Checked;
+        }*/
+
+        /*private void cbGreetingStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbGreetingStatus.Checked == true)
+            {
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is disabled");
+            }
+            else
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is enabled");
+        }*/
     }
 }

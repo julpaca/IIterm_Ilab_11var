@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,16 +44,12 @@
             this.radiusForScndCircle = new System.Windows.Forms.TextBox();
             this.AnswerLabel = new System.Windows.Forms.Label();
             this.TotalAreaMessage = new System.Windows.Forms.Label();
-            this.BtnSaveInFile = new System.Windows.Forms.Button();
-            this.takeValuesFromFile = new System.Windows.Forms.Button();
-            this.labelSaveInFile = new System.Windows.Forms.Label();
-            this.labelOr = new System.Windows.Forms.Label();
             this.labelAboutProgram = new System.Windows.Forms.Label();
             this.labelFirstCircleInfo = new System.Windows.Forms.Label();
             this.labelScndCircleInfo = new System.Windows.Forms.Label();
             this.buttonReadyValues = new System.Windows.Forms.Button();
-            this.labelSaveResults = new System.Windows.Forms.Label();
-            this.btnSaveResults = new System.Windows.Forms.Button();
+            this.cbGreetingStatus = new System.Windows.Forms.CheckBox();
+            this.btnGoToFileWork = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -126,8 +122,8 @@
             this.xCoordForFirstCircle.Name = "xCoordForFirstCircle";
             this.xCoordForFirstCircle.Size = new System.Drawing.Size(74, 20);
             this.xCoordForFirstCircle.TabIndex = 13;
-            this.xCoordForFirstCircle.TextChanged += new System.EventHandler(this.xCoordForFirstCircle_TextChanged);
-            this.xCoordForFirstCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxXCoord1_KeyPress);
+            this.xCoordForFirstCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
+            this.xCoordForFirstCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // radiusForFirstCircle
             // 
@@ -135,8 +131,8 @@
             this.radiusForFirstCircle.Name = "radiusForFirstCircle";
             this.radiusForFirstCircle.Size = new System.Drawing.Size(74, 20);
             this.radiusForFirstCircle.TabIndex = 14;
-            this.radiusForFirstCircle.TextChanged += new System.EventHandler(this.radiusForFirstCircle_TextChanged);
-            this.radiusForFirstCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxRad1_KeyPress);
+            this.radiusForFirstCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
+            this.radiusForFirstCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // yCoordForFirstCircle
             // 
@@ -144,8 +140,8 @@
             this.yCoordForFirstCircle.Name = "yCoordForFirstCircle";
             this.yCoordForFirstCircle.Size = new System.Drawing.Size(74, 20);
             this.yCoordForFirstCircle.TabIndex = 15;
-            this.yCoordForFirstCircle.TextChanged += new System.EventHandler(this.yCoordForFirstCircle_TextChanged);
-            this.yCoordForFirstCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxYCoord1_KeyPress);
+            this.yCoordForFirstCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
+            this.yCoordForFirstCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // xCoordForScndCircle
             // 
@@ -153,8 +149,8 @@
             this.xCoordForScndCircle.Name = "xCoordForScndCircle";
             this.xCoordForScndCircle.Size = new System.Drawing.Size(74, 20);
             this.xCoordForScndCircle.TabIndex = 16;
-            this.xCoordForScndCircle.TextChanged += new System.EventHandler(this.xCoordForScndCircle_TextChanged);
-            this.xCoordForScndCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxXCoord2_KeyPress);
+            this.xCoordForScndCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
+            this.xCoordForScndCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // yCoordForScndCircle
             // 
@@ -162,8 +158,8 @@
             this.yCoordForScndCircle.Name = "yCoordForScndCircle";
             this.yCoordForScndCircle.Size = new System.Drawing.Size(74, 20);
             this.yCoordForScndCircle.TabIndex = 17;
-            this.yCoordForScndCircle.TextChanged += new System.EventHandler(this.yCoordForScndCircle_TextChanged);
-            this.yCoordForScndCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxYCoord2_KeyPress);
+            this.yCoordForScndCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
+            this.yCoordForScndCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // radiusForScndCircle
             // 
@@ -171,8 +167,8 @@
             this.radiusForScndCircle.Name = "radiusForScndCircle";
             this.radiusForScndCircle.Size = new System.Drawing.Size(71, 20);
             this.radiusForScndCircle.TabIndex = 18;
-            this.radiusForScndCircle.TextChanged += new System.EventHandler(this.radiusForScndCircle_TextChanged);
-            this.radiusForScndCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxRad2_KeyPress);
+            this.radiusForScndCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
+            this.radiusForScndCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // AnswerLabel
             // 
@@ -188,53 +184,12 @@
             // TotalAreaMessage
             // 
             this.TotalAreaMessage.AutoSize = true;
-            this.TotalAreaMessage.Location = new System.Drawing.Point(501, 118);
+            this.TotalAreaMessage.Location = new System.Drawing.Point(398, 118);
             this.TotalAreaMessage.Name = "TotalAreaMessage";
             this.TotalAreaMessage.Size = new System.Drawing.Size(186, 13);
             this.TotalAreaMessage.TabIndex = 21;
             this.TotalAreaMessage.Text = "Общая площадь кругов составила:";
             this.TotalAreaMessage.Visible = false;
-            // 
-            // BtnSaveInFile
-            // 
-            this.BtnSaveInFile.Location = new System.Drawing.Point(516, 253);
-            this.BtnSaveInFile.Name = "BtnSaveInFile";
-            this.BtnSaveInFile.Size = new System.Drawing.Size(147, 54);
-            this.BtnSaveInFile.TabIndex = 22;
-            this.BtnSaveInFile.Text = "Сохранить исходные значения";
-            this.BtnSaveInFile.UseVisualStyleBackColor = true;
-            this.BtnSaveInFile.Visible = false;
-            // 
-            // takeValuesFromFile
-            // 
-            this.takeValuesFromFile.Location = new System.Drawing.Point(274, 335);
-            this.takeValuesFromFile.Name = "takeValuesFromFile";
-            this.takeValuesFromFile.Size = new System.Drawing.Size(167, 46);
-            this.takeValuesFromFile.TabIndex = 23;
-            this.takeValuesFromFile.Text = "Загрузить данные из файла";
-            this.takeValuesFromFile.UseVisualStyleBackColor = true;
-            this.takeValuesFromFile.Click += new System.EventHandler(this.takeValuesFromFile_Click);
-            // 
-            // labelSaveInFile
-            // 
-            this.labelSaveInFile.AutoSize = true;
-            this.labelSaveInFile.Location = new System.Drawing.Point(496, 224);
-            this.labelSaveInFile.Name = "labelSaveInFile";
-            this.labelSaveInFile.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelSaveInFile.Size = new System.Drawing.Size(211, 26);
-            this.labelSaveInFile.TabIndex = 24;
-            this.labelSaveInFile.Text = "Вы можете сохранить данные о кругах. \r\nЕсли хотите.";
-            this.labelSaveInFile.Visible = false;
-            // 
-            // labelOr
-            // 
-            this.labelOr.AutoSize = true;
-            this.labelOr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelOr.Location = new System.Drawing.Point(149, 349);
-            this.labelOr.Name = "labelOr";
-            this.labelOr.Size = new System.Drawing.Size(110, 17);
-            this.labelOr.TabIndex = 25;
-            this.labelOr.Text = "но вы можете и";
             // 
             // labelAboutProgram
             // 
@@ -267,7 +222,7 @@
             // 
             // buttonReadyValues
             // 
-            this.buttonReadyValues.Location = new System.Drawing.Point(225, 173);
+            this.buttonReadyValues.Location = new System.Drawing.Point(198, 225);
             this.buttonReadyValues.Name = "buttonReadyValues";
             this.buttonReadyValues.Size = new System.Drawing.Size(119, 48);
             this.buttonReadyValues.TabIndex = 29;
@@ -275,42 +230,37 @@
             this.buttonReadyValues.UseVisualStyleBackColor = true;
             this.buttonReadyValues.Click += new System.EventHandler(this.buttonReadyValues_Click);
             // 
-            // labelSaveResults
+            // cbGreetingStatus
             // 
-            this.labelSaveResults.AutoSize = true;
-            this.labelSaveResults.Location = new System.Drawing.Point(496, 335);
-            this.labelSaveResults.Name = "labelSaveResults";
-            this.labelSaveResults.Size = new System.Drawing.Size(219, 26);
-            this.labelSaveResults.TabIndex = 30;
-            this.labelSaveResults.Text = "Либо можете сохранить данные о кругах \r\nвместе с результатами вычисления.";
-            this.labelSaveResults.Visible = false;
+            this.cbGreetingStatus.AutoSize = true;
+            this.cbGreetingStatus.Location = new System.Drawing.Point(22, 421);
+            this.cbGreetingStatus.Name = "cbGreetingStatus";
+            this.cbGreetingStatus.Size = new System.Drawing.Size(148, 17);
+            this.cbGreetingStatus.TabIndex = 32;
+            this.cbGreetingStatus.Text = "Отключить приветствие";
+            this.cbGreetingStatus.UseVisualStyleBackColor = true;
             // 
-            // btnSaveResults
+            // btnGoToFileWork
             // 
-            this.btnSaveResults.Location = new System.Drawing.Point(521, 375);
-            this.btnSaveResults.Name = "btnSaveResults";
-            this.btnSaveResults.Size = new System.Drawing.Size(142, 45);
-            this.btnSaveResults.TabIndex = 31;
-            this.btnSaveResults.Text = "Сохранить результат";
-            this.btnSaveResults.UseVisualStyleBackColor = true;
-            this.btnSaveResults.Visible = false;
-            this.btnSaveResults.Click += new System.EventHandler(this.btnSaveResults_Click);
+            this.btnGoToFileWork.Location = new System.Drawing.Point(569, 335);
+            this.btnGoToFileWork.Name = "btnGoToFileWork";
+            this.btnGoToFileWork.Size = new System.Drawing.Size(174, 48);
+            this.btnGoToFileWork.TabIndex = 33;
+            this.btnGoToFileWork.Text = "Сохранить/Загрузить данные";
+            this.btnGoToFileWork.UseVisualStyleBackColor = true;
+            this.btnGoToFileWork.Click += new System.EventHandler(this.btnGoToFileWork_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnSaveResults);
-            this.Controls.Add(this.labelSaveResults);
+            this.ClientSize = new System.Drawing.Size(794, 450);
+            this.Controls.Add(this.btnGoToFileWork);
+            this.Controls.Add(this.cbGreetingStatus);
             this.Controls.Add(this.buttonReadyValues);
             this.Controls.Add(this.labelScndCircleInfo);
             this.Controls.Add(this.labelFirstCircleInfo);
             this.Controls.Add(this.labelAboutProgram);
-            this.Controls.Add(this.labelOr);
-            this.Controls.Add(this.labelSaveInFile);
-            this.Controls.Add(this.takeValuesFromFile);
-            this.Controls.Add(this.BtnSaveInFile);
             this.Controls.Add(this.TotalAreaMessage);
             this.Controls.Add(this.AnswerLabel);
             this.Controls.Add(this.radiusForScndCircle);
@@ -326,8 +276,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,16 +300,12 @@
         private System.Windows.Forms.TextBox radiusForScndCircle;
         private System.Windows.Forms.Label AnswerLabel;
         private System.Windows.Forms.Label TotalAreaMessage;
-        private System.Windows.Forms.Button BtnSaveInFile;
-        private System.Windows.Forms.Button takeValuesFromFile;
-        private System.Windows.Forms.Label labelSaveInFile;
-        private System.Windows.Forms.Label labelOr;
         private System.Windows.Forms.Label labelAboutProgram;
         private System.Windows.Forms.Label labelFirstCircleInfo;
         private System.Windows.Forms.Label labelScndCircleInfo;
         private System.Windows.Forms.Button buttonReadyValues;
-        private System.Windows.Forms.Label labelSaveResults;
-        private System.Windows.Forms.Button btnSaveResults;
+        private System.Windows.Forms.CheckBox cbGreetingStatus;
+        private System.Windows.Forms.Button btnGoToFileWork;
     }
 }
 

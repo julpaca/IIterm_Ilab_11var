@@ -8,3 +8,25 @@ D:\вуз\ЧЕТВЁРТЫЙ сем\прога (рпс)\I лаба\WindowsFormsA
 D:\вуз\ЧЕТВЁРТЫЙ сем\прога (рпс)\I лаба\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 D:\вуз\ЧЕТВЁРТЫЙ сем\прога (рпс)\I лаба\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\вуз\ЧЕТВЁРТЫЙ сем\прога (рпс)\I лаба\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\вуз\ЧЕТВЁРТЫЙ сем\git\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\вуз\ЧЕТВЁРТЫЙ сем\git\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\вуз\ЧЕТВЁРТЫЙ сем\git\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\вуз\ЧЕТВЁРТЫЙ сем\git\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+D:\вуз\ЧЕТВЁРТЫЙ сем\git\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FileWork.resources
+D:\вуз\ЧЕТВЁРТЫЙ сем\git\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\вуз\ЧЕТВЁРТЫЙ сем\git\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+D:\вуз\ЧЕТВЁРТЫЙ сем\git\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+D:\вуз\ЧЕТВЁРТЫЙ сем\git\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\вуз\ЧЕТВЁРТЫЙ сем\git\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\вуз\ЧЕТВЁРТЫЙ сем\git\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MainForm.resources
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FileWork.resources
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MainForm.resources
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
