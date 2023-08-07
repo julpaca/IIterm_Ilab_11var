@@ -26,12 +26,12 @@ namespace WindowsFormsApp1
             get { return radius; }
             set { radius = value; }
         }
-        public Circle(double x,double y,double z)
+        /*public Circle(double x,double y,double z)
         {
             double xCoord=x;
             double yCoord=y;
             double radius=z;
-        }
+        }*/
 
         /*public class FirstCircle : Circle
         {

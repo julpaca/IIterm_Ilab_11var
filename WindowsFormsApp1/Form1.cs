@@ -15,103 +15,45 @@ namespace WindowsFormsApp1
 {
     public partial class MainForm : Form
     {
-        Circle firstCircle = new Circle(0, 0, 0);
-        Circle secondCircle = new Circle(0, 0, 0);
+        Circle firstCircle = new Circle();
+        Circle secondCircle = new Circle();
         public MainForm(Circle firstC, Circle secondC)
         {
             InitializeComponent();
-            try
+            greeting();
+
+            if (Answer.isDataFromFile == true)
             {
-                //string greetingStatus = System.IO.File.ReadAllText("Cache.txt");
-
-                firstCircle = firstC;
-                secondCircle = secondC;
-                xCoordForFirstCircle.Text = firstCircle.xC.ToString();
-                yCoordForFirstCircle.Text = firstCircle.yC.ToString();
-                radiusForFirstCircle.Text = firstCircle.rad.ToString();
-
-                xCoordForScndCircle.Text = secondCircle.xC.ToString();
-                yCoordForScndCircle.Text = secondCircle.yC.ToString();
-                radiusForScndCircle.Text = secondCircle.rad.ToString();
-                greeting();
-            }
-            /* catch (FileNotFoundException ex)
-             {
-                 string addMs = " Файл будет повторно создан со значением \"Greeting is enabled\"."; ;
-                 MessageBox.Show(ex.Message + addMs);
-
-                 File.Create("Cache.txt").Close();
-                 using (StreamWriter streamWr = File.AppendText("Cache.txt"))
-                 {
-                     streamWr.Write("Greeting is enabled");
-                 }
-             }*/
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            /*finally
-            {
-                cbGreetingStatus.Checked = Answer.isCBChecked;
-                
-                string greetingStatus = System.IO.File.ReadAllText("Cache.txt");
-
-                *//*if (greetingStatus.Contains("Work with files...")) {
-                    System.IO.File.WriteAllText("Cache.txt", "Greeting is enabled");
-                }*//*
-
-                if (greetingStatus.Contains("Greeting is enabled"))
+                try
                 {
-                    MessageBox.Show("Лабораторная работа #1, вариант #11. Работу выполнила Науменко Юлия, 415а группа. В этом приложении Вы можете ввести данные о двух кругах для поиска их общей площади.Круги находятся в плоскости. Также Вы можете взять данные о кругах из файла, либо сохранить введённые вами данные в файл.");
-                    cbGreetingStatus.Checked = false;
+                    firstCircle = firstC;
+                    secondCircle = secondC;
+                    xCoordForFirstCircle.Text = firstCircle.xC.ToString();
+                    yCoordForFirstCircle.Text = firstCircle.yC.ToString();
+                    radiusForFirstCircle.Text = firstCircle.rad.ToString();
+
+                    xCoordForScndCircle.Text = secondCircle.xC.ToString();
+                    yCoordForScndCircle.Text = secondCircle.yC.ToString();
+                    radiusForScndCircle.Text = secondCircle.rad.ToString();
                 }
-
-
-                if (greetingStatus.Contains("Greeting is disabled"))
-                    cbGreetingStatus.Checked = true;
-                
-                *//*
-                if (greetingStatus == "Work with files...")
-                    cbGreetingStatus.Checked = true;*/
-
-
-            /*firstCircle = firstC;
-            secondCircle = secondC;
-            xCoordForFirstCircle.Text = firstCircle.xC.ToString();
-            yCoordForFirstCircle.Text = firstCircle.yC.ToString();
-            radiusForFirstCircle.Text = firstCircle.rad.ToString();
-
-            xCoordForScndCircle.Text = secondCircle.xC.ToString();
-            yCoordForScndCircle.Text = secondCircle.yC.ToString();
-            radiusForScndCircle.Text = secondCircle.rad.ToString();*/
-
-            /*greetingStatus = System.IO.File.ReadAllText("Cache");
-            if (greetingStatus == "Ok")
-            {
-                MessageBox.Show("Лабораторная работа #1, вариант #11. Работу выполнила Науменко Юлия, 415а группа. В этом приложении Вы можете ввести данные о двух кругах для поиска их общей площади.Круги находятся в плоскости. Также Вы можете взять данные о кругах из файла, либо сохранить введённые вами данные в файл.");
+           
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            else
-            {
-                cbGreetingStatus.Checked = true;
-            }*//*
-        }*/
         }
-
-
-
         private void calculate_Click(object sender, EventArgs e)
         {
             if (have_Text_Boxes_Values(xCoordForFirstCircle, yCoordForFirstCircle, radiusForFirstCircle, xCoordForScndCircle, yCoordForScndCircle, radiusForScndCircle) == true)
             {
-                int xFirstCircle = Convert.ToInt32(xCoordForFirstCircle.Text);
-                int yFirstCircle = Convert.ToInt32(yCoordForFirstCircle.Text);
-                int radFirstCircle = Convert.ToInt32(radiusForFirstCircle.Text);
+                double xFirstCircle = Convert.ToDouble(xCoordForFirstCircle.Text);
+                double yFirstCircle = Convert.ToDouble(yCoordForFirstCircle.Text);
+                double radFirstCircle = Convert.ToDouble(radiusForFirstCircle.Text);
 
-                int xScndCircle = Convert.ToInt32(xCoordForScndCircle.Text);
-                int yScndCircle = Convert.ToInt32(yCoordForScndCircle.Text);
-                int radScndCircle = Convert.ToInt32(radiusForScndCircle.Text);
+                double xScndCircle = Convert.ToDouble(xCoordForScndCircle.Text);
+                double yScndCircle = Convert.ToDouble(yCoordForScndCircle.Text);
+                double radScndCircle = Convert.ToDouble(radiusForScndCircle.Text);
 
                 calculation_Distance_Between_Circles(xFirstCircle, xScndCircle, yFirstCircle, yScndCircle, radFirstCircle, radScndCircle);
             }
@@ -133,10 +75,36 @@ namespace WindowsFormsApp1
 
                 return false;
             }
+            else if (double.TryParse(xCoordForFirstCircle.Text, out double xfc) == false ||
+                     double.TryParse(yCoordForFirstCircle.Text, out double yfc) == false ||
+                     double.TryParse(radiusForFirstCircle.Text, out double rfc) == false ||
+                     double.TryParse(xCoordForScndCircle.Text, out double xsc) == false ||
+                     double.TryParse(yCoordForScndCircle.Text, out double yxs) == false ||
+                     double.TryParse(radiusForScndCircle.Text, out double rxs) == false)
+            {
+                MessageBoxButtons btn = MessageBoxButtons.YesNo;
+                var result = MessageBox.Show("Как ни странно, в полях остались некорректные данные. Сотрём некорректные данные?", "Упс!", btn);
+                if (result == DialogResult.Yes)
+                {
+                    if (double.TryParse(xCoordForFirstCircle.Text, out xfc) == false)
+                        xCoordForFirstCircle.Clear();
+                    if (double.TryParse(yCoordForFirstCircle.Text, out yfc) == false)
+                        yCoordForFirstCircle.Clear(); 
+                    if (double.TryParse(radiusForFirstCircle.Text, out rfc) == false)
+                        radiusForFirstCircle.Clear();
+                    if (double.TryParse(xCoordForScndCircle.Text, out xsc) == false)
+                        xCoordForScndCircle.Clear();
+                    if (double.TryParse(yCoordForScndCircle.Text, out yxs) == false)
+                        yCoordForScndCircle.Clear();
+                    if (double.TryParse(radiusForScndCircle.Text, out rxs) == false)
+                        radiusForScndCircle.Clear();
+                }
+                return false;
+            } 
             else return true;
         }
 
-        private void tbTextLeave(object sender, EventArgs e)
+        /*private void tbTextLeave(object sender, EventArgs e)
         {
             try
             {
@@ -149,22 +117,24 @@ namespace WindowsFormsApp1
                 System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
                 tb.Clear();
             }
-        }
+        }*/
 
         private void tb_KeyPress(object sender, KeyPressEventArgs e)
         {
+            TextBox obj_tb = (TextBox)sender;
+            string txt = obj_tb.Text;
+            bool isDigit = int.TryParse(txt, out int n);
+            
             try
             {
-                if ((e.KeyChar >= '0') && (e.KeyChar <= '9'))
-                    return;
-                if ((e.KeyChar == '-') && (yCoordForFirstCircle.Text.Length == 0)) return;
+                if ((e.KeyChar >= '0') && (e.KeyChar <= '9')) return;
+                
+                if ((e.KeyChar == '-') && (String.IsNullOrEmpty(txt))) return;
 
-                if (Char.IsControl(e.KeyChar))
-                {
-                    if (e.KeyChar == (Char)Keys.Enter)
-                        radiusForFirstCircle.Focus();
-                    return;
-                }
+                if ((e.KeyChar == ',') && (isDigit == true)) return;
+
+                if ((e.KeyChar == (char)Keys.Back)) return;
+                
                 e.Handled = true;
             }
             catch (Exception ex)
@@ -173,108 +143,15 @@ namespace WindowsFormsApp1
             }
         }
 
-        /*private void textBoxXCoord1_KeyPress(object sender, KeyPressEventArgs e)
+        private void calculation_Distance_Between_Circles(double x1, double x2, double y1, double y2, double rad1, double rad2)
         {
-            try
-            {
-                if ((e.KeyChar >= '0') && (e.KeyChar <= '9'))
-                    return;
-                if ((e.KeyChar == '-') && (yCoordForFirstCircle.Text.Length == 0)) return;
-
-                if (Char.IsControl(e.KeyChar))
-                {
-                    if (e.KeyChar == (Char)Keys.Enter)
-                        radiusForFirstCircle.Focus();
-                    return;
-                }
-                e.Handled = true;
-            }
-            catch (Exception ex)
-            {
-               MessageBox.Show(ex.Message);
-            }
+            double tmp = 0;
+            tmp = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
+            double distanceBetweenCenters = Math.Sqrt(tmp);
+            double distanceBetweenCircles = distanceBetweenCenters - rad1 - rad2;
+            validatingDistance(distanceBetweenCircles);
+            calculation_Area_Crossed_Circles(rad1, rad2, distanceBetweenCenters);
         }
-        private void textBoxYCoord1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '0') && (e.KeyChar <= '9')) return;
-            if ((e.KeyChar == '-') && (yCoordForFirstCircle.Text.Length == 0)) return;
-
-            if (Char.IsControl(e.KeyChar))
-            {
-                if (e.KeyChar == (Char)Keys.Enter)
-                    radiusForFirstCircle.Focus();
-                return;
-            }
-
-            e.Handled = true;
-        }
-
-
-        private void textBoxRad1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '1') && (e.KeyChar <= '9'))
-                return;
-            if ((e.KeyChar == '0') && (radiusForFirstCircle.Text.Length != 0))
-                return;
-            if (Char.IsControl(e.KeyChar))
-            {
-                if (e.KeyChar == (Char)Keys.Enter)
-                    radiusForFirstCircle.Focus();
-                return;
-            }
-            e.Handled = true;
-        }
-
-  
-        private void textBoxXCoord2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '0') && (e.KeyChar <= '9'))
-                return;
-            if ((e.KeyChar == '-') && (yCoordForFirstCircle.Text.Length == 0)) return;
-
-            if (Char.IsControl(e.KeyChar))
-            {
-                if (e.KeyChar == (Char)Keys.Enter)
-                    radiusForFirstCircle.Focus();
-                return;
-            }
-            e.Handled = true;
-        }
-
-  
-        private void textBoxYCoord2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '0') && (e.KeyChar <= '9'))
-                return;
-            if ((e.KeyChar == '-') && (yCoordForFirstCircle.Text.Length == 0)) return;
-
-            if (Char.IsControl(e.KeyChar))
-            {
-                if (e.KeyChar == (Char)Keys.Enter)
-                    radiusForFirstCircle.Focus();
-                return;
-            }
-            e.Handled = true;
-        }
-
- 
-        private void textBoxRad2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '1') && (e.KeyChar <= '9'))
-                return;
-            if ((e.KeyChar == '0') && (radiusForScndCircle.Text.Length != 0))
-                return;
-
-            if (Char.IsControl(e.KeyChar))
-            {
-                if (e.KeyChar == (Char)Keys.Enter)
-                    radiusForFirstCircle.Focus();
-                return;
-            }
-            e.Handled = true;
-        }*/
-
-
         private void validatingDistance(double distance)
         {
             string message = "Оу, кажется, у этих кругов нет общей площади. Сотрём введённые данные?";
@@ -282,8 +159,8 @@ namespace WindowsFormsApp1
 
             if (distance >= 0)
             {
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                var result = MessageBox.Show(message, caption, buttons);
+                MessageBoxButtons btn = MessageBoxButtons.YesNo;
+                var result = MessageBox.Show(message, caption, btn);
                 if (result == DialogResult.Yes)
                 {
                     xCoordForFirstCircle.Clear();
@@ -295,17 +172,8 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        private void calculation_Distance_Between_Circles(int x1, int x2, int y1, int y2, int rad1, int rad2)
-        {
-            double tmp = 0;
-            tmp = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
-            double distanceBetweenCenters = Math.Sqrt(tmp);
-            double distanceBetweenCircles = distanceBetweenCenters - rad1 - rad2;
-            validatingDistance(distanceBetweenCircles);
-            calculation_Area_Crossed_Circles(rad1, rad2, distanceBetweenCenters);
-        }
 
-        private void calculation_Area_Crossed_Circles(int rad1, int rad2, double distance)
+        private void calculation_Area_Crossed_Circles(double rad1, double rad2, double distance)
         {
             double AreaCrossedCircles = 0;
             double TriangleArea1 = 0;
@@ -319,9 +187,11 @@ namespace WindowsFormsApp1
             {
                 if (rad1 < rad2)
                     AreaCrossedCircles = pi * rad1 * rad1;
+
                 else if (rad2 < rad1)
                     AreaCrossedCircles = pi * rad2 * rad2;
-
+                else if (rad1 == rad2)
+                    AreaCrossedCircles = pi * rad2 * rad2;
             }
             else
             {
@@ -334,9 +204,11 @@ namespace WindowsFormsApp1
 
                 AreaCrossedCircles = TriangleArea1 + TriangleArea2;
                 AreaCrossedCircles = Math.Round(AreaCrossedCircles, 3);
-                Answer.answer = AreaCrossedCircles;
-                Answer.haveCirclesCollectiveArea = true;
+                //Answer.haveCirclesCollectiveArea = true;
             }
+
+            Answer.answer = AreaCrossedCircles;
+            Answer.canResultsBeSaved = true;
             show_Answer(AreaCrossedCircles);
 
         }
@@ -383,10 +255,10 @@ namespace WindowsFormsApp1
                 secondCircle.yC = Convert.ToDouble(yCoordForScndCircle.Text);
                 secondCircle.rad = Convert.ToDouble(radiusForScndCircle.Text);
                 Answer.canCirclesBeSaved = true;
-                if (String.IsNullOrWhiteSpace(Convert.ToString(Answer.answer)))
+                /*if (String.IsNullOrEmpty(Convert.ToString(Answer.answer)))
                     Answer.canResultsBeSaved = false;
                 else
-                    Answer.canResultsBeSaved = true;
+                    Answer.canResultsBeSaved = true;*/
             }
 
             catch
@@ -430,6 +302,7 @@ namespace WindowsFormsApp1
             }
 
         }
+
 
         /*private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {

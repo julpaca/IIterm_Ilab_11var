@@ -13,8 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class FileWork : Form
     {
-        Circle firstCircle = new Circle(0, 0, 0);
-        Circle secondCircle = new Circle(0, 0, 0);
+        Circle firstCircle = new Circle();
+        Circle secondCircle = new Circle();
         public FileWork(Circle firstC, Circle secondC)
         {
             InitializeComponent();
@@ -140,6 +140,7 @@ namespace WindowsFormsApp1
                                 secondCircle.yC = Convert.ToDouble(values[4]);
                                 secondCircle.rad = Convert.ToDouble(values[5]);
 
+                                Answer.isDataFromFile = true;
                                 FileWork.ActiveForm.Hide();
                                 MessageBox.Show("Данные были успешно загружены.", "Поздравляю!");
                                 MainForm mainForm = new MainForm(firstCircle, secondCircle);

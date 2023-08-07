@@ -123,7 +123,6 @@
             this.xCoordForFirstCircle.Size = new System.Drawing.Size(74, 20);
             this.xCoordForFirstCircle.TabIndex = 13;
             this.xCoordForFirstCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
-            this.xCoordForFirstCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // radiusForFirstCircle
             // 
@@ -132,7 +131,6 @@
             this.radiusForFirstCircle.Size = new System.Drawing.Size(74, 20);
             this.radiusForFirstCircle.TabIndex = 14;
             this.radiusForFirstCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
-            this.radiusForFirstCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // yCoordForFirstCircle
             // 
@@ -141,7 +139,6 @@
             this.yCoordForFirstCircle.Size = new System.Drawing.Size(74, 20);
             this.yCoordForFirstCircle.TabIndex = 15;
             this.yCoordForFirstCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
-            this.yCoordForFirstCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // xCoordForScndCircle
             // 
@@ -150,7 +147,6 @@
             this.xCoordForScndCircle.Size = new System.Drawing.Size(74, 20);
             this.xCoordForScndCircle.TabIndex = 16;
             this.xCoordForScndCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
-            this.xCoordForScndCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // yCoordForScndCircle
             // 
@@ -159,7 +155,6 @@
             this.yCoordForScndCircle.Size = new System.Drawing.Size(74, 20);
             this.yCoordForScndCircle.TabIndex = 17;
             this.yCoordForScndCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
-            this.yCoordForScndCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // radiusForScndCircle
             // 
@@ -168,7 +163,6 @@
             this.radiusForScndCircle.Size = new System.Drawing.Size(71, 20);
             this.radiusForScndCircle.TabIndex = 18;
             this.radiusForScndCircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
-            this.radiusForScndCircle.Leave += new System.EventHandler(this.tbTextLeave);
             // 
             // AnswerLabel
             // 

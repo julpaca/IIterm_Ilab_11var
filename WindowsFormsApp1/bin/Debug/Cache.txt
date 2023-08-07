@@ -1,1 +1,1 @@
-Greeting is enabled
+Greeting is disabled
