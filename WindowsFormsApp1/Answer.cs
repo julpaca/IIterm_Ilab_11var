@@ -13,5 +13,6 @@ namespace WindowsFormsApp1
         public static bool canResultsBeSaved;
         public static bool canCirclesBeSaved;
         public static bool isDataFromFile = false;
+        public static bool isDataCorrect = true;
     }
 }

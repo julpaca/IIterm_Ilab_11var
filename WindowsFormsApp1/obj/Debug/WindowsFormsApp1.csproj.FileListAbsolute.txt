@@ -30,3 +30,15 @@ C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\D
 C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.SuggestedBindingRedirects.cache
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FileWork.resources
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MainForm.resources
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

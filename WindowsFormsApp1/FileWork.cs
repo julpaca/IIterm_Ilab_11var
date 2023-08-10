@@ -36,12 +36,17 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Данные о результате вычисления не были получены, поэтому функция сохранения результата будет отключена.", "Упс!");
                 btnSaveResults.Enabled = false;
             }
+
+            else if (Answer.isDataCorrect == false)
+            {
+                MessageBox.Show(".Данные в полях были некорректны, функции сохранения будут отключены.", "Упс!");
+                btnSaveResults.Enabled = false;
+                BtnSaveValuesInFile.Enabled = false;
+            }
         }
 
         private void btnReturnToMainForm_Click(object sender, EventArgs e)
         {
-            //checkingGreetingStatus.Checked = true;
-
             FileWork.ActiveForm.Hide();
             MainForm MainForm = new MainForm(firstCircle, secondCircle);
             MainForm.ShowDialog();
@@ -105,7 +110,8 @@ namespace WindowsFormsApp1
 
         private void LoadValuesFromFile_Click(object sender, EventArgs e)
         {
-            double inputData;
+            double inputData = 0;
+            bool exAboutLen = false;
             Stream myStream = null;
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
@@ -126,31 +132,41 @@ namespace WindowsFormsApp1
                         using (StreamReader fileReader = new StreamReader(openFile.FileName))
                         {
                             string[] values = fileReader.ReadToEnd().Split('\n');
-                            try
+                            int dim = 0;
+                            if(values.GetLength(dim) != 6)
                             {
-                                for (int i = 0; i < values.Length - 1; i++)
-                                {
-                                    inputData = Convert.ToDouble(values[i]);
-                                }
-                                firstCircle.xC = Convert.ToDouble(values[0]);
-                                firstCircle.yC = Convert.ToDouble(values[1]);
-                                firstCircle.rad = Convert.ToDouble(values[2]);
-
-                                secondCircle.xC = Convert.ToDouble(values[3]);
-                                secondCircle.yC = Convert.ToDouble(values[4]);
-                                secondCircle.rad = Convert.ToDouble(values[5]);
-
-                                Answer.isDataFromFile = true;
-                                FileWork.ActiveForm.Hide();
-                                MessageBox.Show("Данные были успешно загружены.", "Поздравляю!");
-                                MainForm mainForm = new MainForm(firstCircle, secondCircle);
-                                mainForm.ShowDialog();
-                                Close();
-
+                                MessageBox.Show("Количество элементов в файле не совпадает с необходимым.","Упс!");
+                                fileReader.Close();
+                                exAboutLen = true;
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                MessageBox.Show(ex.Message);
+                                try
+                                {
+                                    for (int i = 0; i < values.Length - 1; i++)
+                                    {
+                                        inputData = Convert.ToDouble(values[i]);
+                                    }
+                                    firstCircle.xC = Convert.ToDouble(values[0]);
+                                    firstCircle.yC = Convert.ToDouble(values[1]);
+                                    firstCircle.rad = Convert.ToDouble(values[2]);
+
+                                    secondCircle.xC = Convert.ToDouble(values[3]);
+                                    secondCircle.yC = Convert.ToDouble(values[4]);
+                                    secondCircle.rad = Convert.ToDouble(values[5]);
+
+                                    Answer.isDataFromFile = true;
+                                    FileWork.ActiveForm.Hide();
+                                    MessageBox.Show("Данные были успешно загружены.", "Поздравляю!");
+                                    MainForm mainForm = new MainForm(firstCircle, secondCircle);
+                                    mainForm.ShowDialog();
+                                    Close();
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                }
                             }
                             //fileReader.Close();
                         }
@@ -160,6 +176,7 @@ namespace WindowsFormsApp1
 
                 catch (Exception ex)
                 {
+                    if (exAboutLen == false)
                     MessageBox.Show(ex.Message);
                 }
             }

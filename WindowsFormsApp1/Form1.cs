@@ -22,26 +22,24 @@ namespace WindowsFormsApp1
             InitializeComponent();
             greeting();
 
-            if (Answer.isDataFromFile == true)
+            try
             {
-                try
-                {
-                    firstCircle = firstC;
-                    secondCircle = secondC;
-                    xCoordForFirstCircle.Text = firstCircle.xC.ToString();
-                    yCoordForFirstCircle.Text = firstCircle.yC.ToString();
-                    radiusForFirstCircle.Text = firstCircle.rad.ToString();
+                firstCircle = firstC;
+                secondCircle = secondC;
+                xCoordForFirstCircle.Text = firstCircle.xC.ToString();
+                yCoordForFirstCircle.Text = firstCircle.yC.ToString();
+                radiusForFirstCircle.Text = firstCircle.rad.ToString();
 
-                    xCoordForScndCircle.Text = secondCircle.xC.ToString();
-                    yCoordForScndCircle.Text = secondCircle.yC.ToString();
-                    radiusForScndCircle.Text = secondCircle.rad.ToString();
-                }
-           
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                xCoordForScndCircle.Text = secondCircle.xC.ToString();
+                yCoordForScndCircle.Text = secondCircle.yC.ToString();
+                radiusForScndCircle.Text = secondCircle.rad.ToString();
             }
+           
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+     
         }
         private void calculate_Click(object sender, EventArgs e)
         {
@@ -149,10 +147,12 @@ namespace WindowsFormsApp1
             tmp = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
             double distanceBetweenCenters = Math.Sqrt(tmp);
             double distanceBetweenCircles = distanceBetweenCenters - rad1 - rad2;
-            validatingDistance(distanceBetweenCircles);
-            calculation_Area_Crossed_Circles(rad1, rad2, distanceBetweenCenters);
+            if (validatingDistance(distanceBetweenCircles)==true)
+            {
+                calculation_Area_Crossed_Circles(rad1, rad2, distanceBetweenCenters);
+            }
         }
-        private void validatingDistance(double distance)
+        private bool validatingDistance(double distance)
         {
             string message = "Оу, кажется, у этих кругов нет общей площади. Сотрём введённые данные?";
             string caption = "Упс!";
@@ -170,7 +170,9 @@ namespace WindowsFormsApp1
                     yCoordForScndCircle.Clear();
                     radiusForScndCircle.Clear();
                 }
+                return false;
             }
+            else return true;
         }
 
         private void calculation_Area_Crossed_Circles(double rad1, double rad2, double distance)
@@ -247,14 +249,27 @@ namespace WindowsFormsApp1
             //checkingGreetingStatus.Checked = false;
             try
             {
-                firstCircle.xC = Convert.ToDouble(xCoordForFirstCircle.Text); /*= Convert.ToDouble(xCoordForFirstCircle.Text)*/;
-                firstCircle.yC = Convert.ToDouble(yCoordForFirstCircle.Text);
-                firstCircle.rad = Convert.ToDouble(radiusForFirstCircle.Text);
+                if (double.TryParse(xCoordForFirstCircle.Text, out double xfc) == false ||
+                     double.TryParse(yCoordForFirstCircle.Text, out double yfc) == false ||
+                     double.TryParse(radiusForFirstCircle.Text, out double rfc) == false ||
+                     double.TryParse(xCoordForScndCircle.Text, out double xsc) == false ||
+                     double.TryParse(yCoordForScndCircle.Text, out double yxs) == false ||
+                     double.TryParse(radiusForScndCircle.Text, out double rxs) == false)
+                {
+                    Answer.isDataCorrect = false;
+                }
+                else
+                {
+                    firstCircle.xC = Convert.ToDouble(xCoordForFirstCircle.Text); /*= Convert.ToDouble(xCoordForFirstCircle.Text)*/;
+                    firstCircle.yC = Convert.ToDouble(yCoordForFirstCircle.Text);
+                    firstCircle.rad = Convert.ToDouble(radiusForFirstCircle.Text);
 
-                secondCircle.xC = Convert.ToDouble(xCoordForScndCircle.Text);
-                secondCircle.yC = Convert.ToDouble(yCoordForScndCircle.Text);
-                secondCircle.rad = Convert.ToDouble(radiusForScndCircle.Text);
-                Answer.canCirclesBeSaved = true;
+                    secondCircle.xC = Convert.ToDouble(xCoordForScndCircle.Text);
+                    secondCircle.yC = Convert.ToDouble(yCoordForScndCircle.Text);
+                    secondCircle.rad = Convert.ToDouble(radiusForScndCircle.Text);
+                    Answer.canCirclesBeSaved = true;
+
+                }
                 /*if (String.IsNullOrEmpty(Convert.ToString(Answer.answer)))
                     Answer.canResultsBeSaved = false;
                 else
