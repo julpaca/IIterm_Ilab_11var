@@ -23,8 +23,6 @@ C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\bin\D
 C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
 C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
 C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
-C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FileWork.resources
-C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MainForm.resources
 C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
 C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
@@ -42,3 +40,5 @@ C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFor
 C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Новая папка\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\TotalCommonAreaOfCirclesSearch.FileForm.resources
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\TotalCommonAreaOfCirclesSearch.MainForm.resources

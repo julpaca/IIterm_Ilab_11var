@@ -11,11 +11,11 @@ using System.IO;
 using System.Runtime;
 using System.Diagnostics;
 
-namespace WindowsFormsApp1
+namespace TotalCommonAreaOfCirclesSearch
 {
     public partial class MainForm
     {
-        public void greeting()
+        public void Greeting()
         {
             try
             {
@@ -53,6 +53,27 @@ namespace WindowsFormsApp1
                 {
                     cbGreetingStatus.Checked = true;
                 }
+            }
+        }
+
+        private void CheckingCb(object sender, EventArgs e)
+        {
+            if (cbGreetingStatus.Checked == true)
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is disabled");
+            if (cbGreetingStatus.Checked == false)
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is enabled");
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (cbGreetingStatus.Checked == true)
+            {
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is disabled");
+            }
+
+            if (cbGreetingStatus.Checked == false)
+            {
+                System.IO.File.WriteAllText("Cache.txt", "Greeting is enabled");
             }
         }
     }

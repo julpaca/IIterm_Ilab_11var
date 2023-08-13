@@ -1,1 +1,3 @@
-Greeting is disabled
+Greeting is enabled
+
+Work with files...

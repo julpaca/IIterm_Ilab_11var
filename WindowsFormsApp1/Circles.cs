@@ -4,53 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1
+namespace TotalCommonAreaOfCirclesSearch
 {
     public class Circle
     {
-        private double xCoord;
-        private double yCoord;
-        private double radius;
-        public double xC
+        private double _xCoord;
+        private double _yCoord;
+        private double _radius;
+        public double XC
         {
-            get { return xCoord; }
-            set { xCoord = value; }
+            get { return _xCoord; }
+            set { _xCoord = value; }
         }
-        public double yC
+        public double YC
         {
-            get { return yCoord; }
-            set { yCoord = value; }
+            get { return _yCoord; }
+            set { _yCoord = value; }
         }
-        public double rad
+        public double Rad
         {
-            get { return radius; }
-            set { radius = value; }
+            get { return _radius; }
+            set { _radius = value; }
         }
-        /*public Circle(double x,double y,double z)
-        {
-            double xCoord=x;
-            double yCoord=y;
-            double radius=z;
-        }*/
-
-        /*public class FirstCircle : Circle
-        {
-            public double[] GetValues()
-            {
-                double[] arr = { xCoord, yCoord, radius };
-                return arr;
-            }
-        }
-        public class SecondCircle : Circle 
-        {
-            *//*    public static double xCoord;
-                public static double yCoord;
-                public static double radius;*/
-        /*public double[] GetValues()
-        {
-            double[] arr = { xCoord, yCoord, radius };
-            return arr;
-        }*//*
-    }*/
     }
 }
