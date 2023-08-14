@@ -45,7 +45,7 @@ namespace TotalCommonAreaOfCirclesSearch
 
                 if (greetingStatus.Contains("Greeting is enabled") && !greetingStatus.Contains("Work with files..."))
                 {
-                    MessageBox.Show("ЗДАРОВА!!!", "HELLO EVERYNYAN");
+                    MessageBox.Show("Работа #1, вариант 11, выполнила Науменко Юлия. Программа предназначена для поиска общей площади двух окружностей. Данные для окружностей задаёт пользователь.");
                     cbGreetingStatus.Checked = false;
                 }
 

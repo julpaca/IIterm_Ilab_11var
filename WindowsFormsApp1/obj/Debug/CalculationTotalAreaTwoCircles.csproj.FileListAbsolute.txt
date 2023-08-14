@@ -1,0 +1,11 @@
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\CalculationTotalAreaTwoCircles.csproj.AssemblyReference.cache
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\TotalCommonAreaOfCirclesSearch.FileForm.resources
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\TotalCommonAreaOfCirclesSearch.MainForm.resources
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\CalculationTotalAreaTwoCircles.csproj.GenerateResource.cache
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\CalculationTotalAreaTwoCircles.csproj.CoreCompileInputs.cache
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Kori\Desktop\IIterm_Ilab_11var\IIterm_Ilab_11var\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
